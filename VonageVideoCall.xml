@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="intrasoft netcompany.vonagevideocall.VonageVideoCall" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Cosmote Vonage Video Call Widget</name>
+    <description>Payzy agent backoffice video call</description>
+    <icon/>
+    <properties>
+    <propertyGroup caption="Basic Setup">
+        <!-- Theme Selection -->
+        <property key="themeSelection" type="string" required="false" defaultValue="blur">
+            <caption>Theme</caption>
+            <description>Select the background theme: none, blur, or theme</description>
+        </property>
+
+        <property key="sessionEntity" type="datasource" isList="true">
+            <caption>Session Data</caption>
+            <description>Data source for session-related information</description>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup caption="Session Information">
+        <!-- Vonage API Key -->
+        <property key="vonageApiKey" type="string" required="true">
+            <caption>API Key</caption>
+            <description>Vonage API key for authentication</description>
+        </property>
+
+        <!-- Vonage API Secret -->
+        <property key="vonageApiSecret" type="string" required="true">
+            <caption>API Secret</caption>
+            <description>Vonage API secret for secure access</description>
+        </property>
+
+        <!-- Session ID -->
+        <property key="vonageSessionID" type="attribute" required="true">
+            <caption>Session ID</caption>
+            <description>Unique ID for the Vonage session</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>
+
+            <property key="VCI_GUID" type="attribute" required="true">
+            <caption>Session Video item ID</caption>
+            <description>Unique ID for the Vonage session videoItem</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>
+
+        <!-- Token -->
+        <property key="vonageToken" type="attribute" required="true">
+            <caption>Token</caption>
+            <description>Authentication token for the session</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>
+
+        <!-- Customer UUID -->
+        <property key="uuid" type="attribute" required="true">
+            <caption>Customer UUID</caption>
+            <description>Unique identifier for the customer</description>
+            <attributeTypes>
+                <attributeType name="String"/>
+            </attributeTypes>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup caption="Terminate Call Configuration">
+        <!-- Enable/Disable Interruption When Leaving Tab -->
+        <property key="enableInterruption" type="boolean" required="true" defaultValue="false">
+            <caption>Tab Interruption</caption>
+            <description>Allow or prevent call interruption when leaving the tab</description>
+        </property>
+
+        <!-- Microflow for Normal Call Termination -->
+        <property key="customFlow" type="string" required="false" defaultValue="Vonage_ExternalAPI.MF_TerminateCall">
+            <caption>Normal Flow</caption>
+            <description>Microflow to handle standard call termination</description>
+        </property>
+
+        <!-- Microflow for Interruption Call Termination -->
+        <property key="terminateFlow" type="string" required="false" defaultValue="Vonage_ExternalAPI.MF_TerminateCall_Interrupt">
+            <caption>Interruption Flow</caption>
+            <description>Microflow to handle interrupted call termination</description>
+        </property>
+
+        <!-- Nanoflow for Offline Call Termination -->
+        <property key="OfflineNanoFlow" type="string" required="false" defaultValue="Vonage_ExternalAPI.NF_TerminateCall_Offline">
+            <caption>Offline Flow (experimental)</caption>
+            <description>Microflow for handling offline call termination</description>
+        </property>
+
+        <property key="offlineAttribute" type="string" required="true">
+            <caption>Offline flag</caption>
+            <description>Unique identifier for the customer</description>
+          
+        </property>
+       
+        
+    </propertyGroup>
+</properties>
+
+</widget>
